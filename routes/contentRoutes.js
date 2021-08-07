@@ -2,8 +2,11 @@ const express = require("express");
 const router = express.Router();
 const content = require("../controllers/contentControllers");
 
-router.post("/", content.postContent);
+let passport = require("passport");
+let basicAuth = passport.authenticate("basic", { session: false });
 
-router.get("/latest/", content.getLatestContent);
+router.post("/", basicAuth, content.postContent);
+
+router.get("/latest/", basicAuth, content.getLatestContent);
 
 module.exports = router;

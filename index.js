@@ -1,9 +1,9 @@
 require("dotenv").config({ path: __dirname + "/.env" });
 const pool = require("./config/database");
-
 const express = require("express");
 const app = express();
 const port = 3000;
+const passport = require("./config/passport");
 const contentRouter = require("./routes/contentRoutes");
 
 app.use(express.json());
